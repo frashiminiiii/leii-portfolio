@@ -1,19 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 export const MouseGlow = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const glowRef = useRef(null);
 
   useEffect(() => {
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    let frameId = null;
+    let nextX = 0;
+    let nextY = 0;
+
+    const updateGlow = () => {
+      frameId = null;
+      if (!glowRef.current) return;
+      glowRef.current.style.background = `radial-gradient(800px at ${nextX}px ${nextY}px, rgba(20,184,166,0.15), transparent 70%)`;
+    };
+
+    const handleMouseMove = (e) => {
+      nextX = e.clientX;
+      nextY = e.clientY;
+
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(updateGlow);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
     <div
+      ref={glowRef}
       className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
       style={{
-        background: `radial-gradient(800px at ${mousePos.x}px ${mousePos.y}px, rgba(20,184,166,0.15), transparent 70%)`,
+        background:
+          "radial-gradient(800px at 0px 0px, rgba(20,184,166,0.15), transparent 70%)",
       }}
     />
   );

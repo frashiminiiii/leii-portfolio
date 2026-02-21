@@ -29,7 +29,7 @@ export default function App() {
           "Highly professional and skilled engineer. Francis has a keen eye for detail and delivers high-quality work on time.",
         rating: 5,
         avatar:
-          "src/assets/profile.jpg",
+          "/jasmina.jpg",
         isPermanent: true,
       },
     ];
@@ -46,7 +46,7 @@ export default function App() {
     title: "Full Stack Developer & Network Engineer",
     education: "BS in Computer Engineering",
     major: "Network Administration",
-    profileImage: "src/assets/profile.jpg",
+    profileImage: "/profile1.jpg",
     quote: "Winning is a bonus, learning is the ultimate goal.",
     about:
       "I am Francis, a dedicated Computer Engineering student with a strong focus on Full Stack Development and Network Systems. My expertise lies in building scalable web applications while ensuring high-availability network infrastructures. I am passionate about clean code, efficient algorithms, and the seamless integration of software and hardware. I am always updating my skills with new technologies to provide innovative solutions to complex engineering problems.",
@@ -57,6 +57,16 @@ export default function App() {
   };
 
   const skills = [
+    {
+      name: "HTML",
+      logo: "https://cdn.simpleicons.org/html5/E34F26",
+      desc: "Semantic and accessible web structure.",
+    },
+    {
+      name: "CSS",
+      logo: "https://cdn.simpleicons.org/css/1572B6",
+      desc: "Modern styling and responsive layouts.",
+    },
     {
       name: "React.js",
       logo: "https://cdn.simpleicons.org/react/61DAFB",
@@ -73,36 +83,66 @@ export default function App() {
       desc: "Responsive modern design.",
     },
     {
+      name: "shadcn/ui",
+      logo: "https://ui.shadcn.com/favicon.ico",
+      desc: "Accessible, reusable React UI components.",
+    },
+    {
+      name: "DaisyUI",
+      logo: "https://cdn.simpleicons.org/daisyui/5A0EF8",
+      desc: "Component classes built on top of Tailwind CSS.",
+    },
+    {
+      name: "Bootstrap",
+      logo: "https://cdn.simpleicons.org/bootstrap/7952B3",
+      desc: "Fast responsive UI framework and utility components.",
+    },
+    {
       name: "GitHub",
       logo: "https://cdn.simpleicons.org/github/white",
       desc: "Version control management.",
+    },
+    {
+      name: "Supabase",
+      logo: "https://cdn.simpleicons.org/supabase/3ECF8E",
+      desc: "Backend-as-a-service with auth and database.",
+    },
+    {
+      name: "C#",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+      desc: "Building robust backend applications.",
+    },
+    {
+      name: "Python",
+      logo: "https://cdn.simpleicons.org/python/3776AB",
+      desc: "Automation, scripting, and data tools.",
     },
   ];
 
   const projects = [
     {
       id: 2,
-      title: "Smart Inventory",
-      tech: ["React", "Firebase"],
-      desc: "IoT system for hardware tracking using dynamic QR codes. Designed for warehouse efficiency.",
-      image:
-        "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200",
+      title: "LEII Task",
+      tech: ["React", "Tailwind", "Vercel"],
+      desc: "Task management web app for organizing daily work and improving productivity.",
+      liveUrl: "https://leii-task.vercel.app",
+      image: "/project-task.png",
     },
     {
       id: 3,
-      title: "E-Commerce Hub",
-      tech: ["Next.js", "Stripe"],
-      desc: "Scalable online store with real-time stock management and secure checkout.",
-      image:
-        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200",
+      title: "LEII Dash",
+      tech: ["React", "Dashboard UI", "Vercel"],
+      desc: "Interactive dashboard project focused on clean UI and real-time data presentation.",
+      liveUrl: "https://leii-dash.vercel.app",
+      image: "/project-dash.png",
     },
     {
       id: 4,
-      title: "Market Tracker",
-      tech: ["API", "Chart.js"],
-      desc: "Live market data dashboard for cryptocurrencies with interactive charting.",
-      image:
-        "https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=1200",
+      title: "LEII Codes",
+      tech: ["React", "Frontend", "Vercel"],
+      desc: "Portfolio-style web project highlighting personal branding and modern web design.",
+      liveUrl: "https://leii-codes-n36d.vercel.app",
+      image: "/project-codes.png",
     },
   ];
 
@@ -116,7 +156,7 @@ export default function App() {
         <MouseGlow />
         <Navigation />
 
-        <main className="pt-20 pb-16 relative z-40">
+        <main className="relative z-40 pt-28 md:pt-24">
           <Routes>
             <Route path="/" element={<Home profile={profile} />} />
             <Route path="/about" element={<About profile={profile} />} />
@@ -139,15 +179,6 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
-
-        <footer className="py-12 border-t border-gray-900 text-center flex flex-col items-center gap-3 relative z-40">
-          <div className="text-lg font-black uppercase tracking-tighter">
-            FRANCIS PASCUA <span className="text-teal-500">/</span> ENGINEER
-          </div>
-          <p className="text-teal-400 font-black italic text-sm tracking-widest uppercase opacity-80">
-            "Rise even when the world tells you to stay down."
-          </p>
-        </footer>
       </div>
     </Router>
   );
