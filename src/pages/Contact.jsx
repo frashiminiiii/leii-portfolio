@@ -8,7 +8,12 @@ import {
   Twitter,
   Send,
   Clock3,
+  ArrowUpRight,
+  BadgeCheck,
+  BriefcaseBusiness,
 } from "lucide-react";
+import { SectionIntro } from "../components/SectionIntro";
+import { SiteFooter } from "../components/SiteFooter";
 
 const socialItems = [
   { key: "github", label: "Github", Icon: Github },
@@ -24,70 +29,107 @@ export const Contact = ({ profile }) => {
   const socials = profile?.socials || {};
 
   return (
-    <div className="relative flex flex-col min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] px-6 overflow-hidden pt-2 md:pt-4">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-teal-500/20 blur-3xl" />
-        <div className="absolute bottom-12 left-10 h-44 w-44 rounded-full bg-emerald-500/10 blur-3xl" />
-      </div>
+    <div className="relative flex flex-col h-full px-6 overflow-hidden pt-2 md:pt-4">
+      <SectionIntro title="Contact" subtitle="Get in touch" />
 
-      {/* Section Title */}
-      <div className="text-center mb-6">
-        <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
-          Contact
-        </h2>
-        <p className="text-teal-400 font-bold text-sm uppercase tracking-widest mt-1">
-          Get in touch
-        </p>
-      </div>
-
-      {/* Contact Content */}
-      <div className="w-full max-w-5xl mx-auto rounded-[2rem] border border-gray-800 bg-gray-900/60 backdrop-blur-md shadow-2xl overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr]">
-          <div className="p-6 sm:p-7 md:p-10 bg-gradient-to-br from-teal-500/20 via-teal-500/10 to-transparent">
-            <div className="inline-flex items-center gap-2 text-teal-300 text-[10px] font-black uppercase tracking-[0.22em] mb-4">
+      <div className="w-full max-w-6xl mx-auto rounded-[2rem] glass-card overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_0.95fr]">
+          <div className="p-6 sm:p-8 md:p-10 bg-gradient-to-br from-cyan-400/18 via-cyan-400/8 to-transparent">
+            <div className="inline-flex items-center gap-2 text-cyan-100 text-[10px] font-black uppercase tracking-[0.22em] mb-4">
               <Send size={12} />
               Direct Contact
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white mb-6 italic tracking-tighter">
-              Let's Connect!
-            </h3>
-            <div className="space-y-4 font-black">
-              <p className="text-gray-300 text-sm leading-relaxed mb-2">
-                Open for collaborations, freelance projects, and engineering opportunities.
-              </p>
-            <a
-              href={`mailto:${email}`}
-              className="flex items-center gap-4 bg-black/30 border border-teal-500/20 p-4 rounded-2xl hover:bg-black/40 transition-all text-sm truncate text-white focus:outline-none focus:ring-2 focus:ring-teal-500/40"
-              aria-label={`Send email to ${email}`}
-            >
-              <span className="p-2 rounded-lg bg-teal-500/20 text-teal-300">
-                <Mail size={18} className="shrink-0" />
-              </span>
-              <span className="truncate">{email}</span>
-            </a>
-            <a
-              href={phoneHref}
-              className="flex items-center gap-4 bg-black/30 border border-teal-500/20 p-4 rounded-2xl hover:bg-black/40 transition-all text-sm text-white focus:outline-none focus:ring-2 focus:ring-teal-500/40"
-              aria-label={`Call ${phone}`}
-            >
-              <span className="p-2 rounded-lg bg-teal-500/20 text-teal-300">
-                <Phone size={18} className="shrink-0" />
-              </span>
-              {phone}
-            </a>
 
-            <div className="flex items-center gap-3 mt-5 text-gray-300 text-xs uppercase tracking-widest">
-              <Clock3 size={14} className="text-teal-400" />
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white tracking-tight leading-[0.95]">
+              Let's Build
+              <br />
+              Something Solid
+            </h3>
+
+            <p className="mt-5 text-gray-300 text-sm md:text-base leading-relaxed max-w-xl">
+              Open for collaborations, freelance projects, and engineering roles.
+              Share your idea and I will reply with a clear technical direction.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-100">
+                <BadgeCheck size={12} />
+                Available For Projects
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-600 bg-slate-800/35 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-slate-200">
+                <BriefcaseBusiness size={12} />
+                Remote Friendly
+              </span>
+            </div>
+
+            <div className="mt-6 space-y-3">
+              <a
+                href={`mailto:${email}`}
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-cyan-300/20 bg-slate-950/45 px-4 py-4 hover:border-cyan-300/45 hover:bg-slate-900/60 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-300/40"
+                aria-label={`Send email to ${email}`}
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="p-2 rounded-lg bg-cyan-300/20 text-cyan-100">
+                    <Mail size={18} className="shrink-0" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-cyan-200/90">
+                      Email
+                    </p>
+                    <p className="text-sm text-white truncate">{email}</p>
+                  </div>
+                </div>
+                <ArrowUpRight
+                  size={16}
+                  className="text-cyan-200/80 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+
+              <a
+                href={phoneHref}
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-cyan-300/20 bg-slate-950/45 px-4 py-4 hover:border-cyan-300/45 hover:bg-slate-900/60 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-300/40"
+                aria-label={`Call ${phone}`}
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="p-2 rounded-lg bg-cyan-300/20 text-cyan-100">
+                    <Phone size={18} className="shrink-0" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-cyan-200/90">
+                      Phone
+                    </p>
+                    <p className="text-sm text-white truncate">{phone}</p>
+                  </div>
+                </div>
+                <ArrowUpRight
+                  size={16}
+                  className="text-cyan-200/80 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
+
+            <div className="mt-5 flex items-center gap-2 text-gray-300 text-[11px] uppercase tracking-widest">
+              <Clock3 size={14} className="text-cyan-300" />
               Usually replies within 24 hours
             </div>
           </div>
-        </div>
 
-          <div className="p-6 sm:p-7 md:p-10 border-t lg:border-t-0 lg:border-l border-gray-800 bg-black/20">
+          <div className="p-6 sm:p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-cyan-100/10 bg-black/25">
+            <div className="rounded-2xl border border-slate-700/80 bg-slate-950/45 p-4 mb-4">
+              <p className="text-[10px] font-black uppercase tracking-widest text-cyan-200 mb-1">
+                Preferred Contact
+              </p>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                For fastest response, send a short email with your project scope
+                and timeline.
+              </p>
+            </div>
+
             <h4 className="text-xs font-black text-white uppercase tracking-widest mb-4">
               Social Networks
             </h4>
-            <div className="grid grid-cols-2 gap-4">
+
+            <div className="grid grid-cols-2 gap-3">
               {socialItems.map(({ key, label, Icon }) => {
                 const href = socials[key] || "#";
                 const hasLink = Boolean(socials[key]);
@@ -99,16 +141,18 @@ export const Contact = ({ profile }) => {
                     target={hasLink ? "_blank" : undefined}
                     rel={hasLink ? "noreferrer noopener" : undefined}
                     onClick={!hasLink ? (e) => e.preventDefault() : undefined}
-                    aria-label={hasLink ? `Open ${label} profile` : `${label} link unavailable`}
-                    className={`p-5 bg-gray-900/70 border border-gray-800 rounded-2xl flex flex-col items-center gap-3 transition-all group ${
+                    aria-label={
+                      hasLink ? `Open ${label} profile` : `${label} link unavailable`
+                    }
+                    className={`p-4 bg-slate-950/70 border border-slate-700 rounded-2xl flex flex-col items-center gap-3 transition-all group ${
                       hasLink
-                        ? "hover:border-teal-400 hover:-translate-y-0.5"
+                        ? "hover:border-cyan-300 hover:-translate-y-0.5 hover:bg-slate-900/80"
                         : "opacity-70 cursor-not-allowed"
                     }`}
                   >
                     <Icon
                       size={24}
-                      className="text-gray-400 group-hover:text-teal-400 transition-all"
+                      className="text-slate-400 group-hover:text-cyan-200 transition-all"
                     />
                     <span className="font-black text-[9px] tracking-widest text-gray-500 uppercase">
                       {label}
@@ -121,15 +165,7 @@ export const Contact = ({ profile }) => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-gray-900 text-center flex flex-col items-center gap-3 relative z-40 mt-auto">
-        <div className="text-lg font-black uppercase tracking-tighter">
-          FRANCIS PASCUA <span className="text-teal-500">/</span> ENGINEER
-        </div>
-        <p className="text-teal-400 font-black italic text-sm tracking-widest uppercase opacity-80">
-          "Rise even when the world tells you to stay down."
-        </p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 };

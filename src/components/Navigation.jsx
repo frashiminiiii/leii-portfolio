@@ -12,11 +12,11 @@ export const Navigation = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-xl border-b border-gray-900 z-50">
+    <header className="fixed top-0 w-full border-b backdrop-blur-xl z-50 site-header">
       <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
         <Link
           to="/"
-          className="text-2xl md:text-3xl font-black bg-linear-to-r from-teal-400 to-emerald-500 bg-clip-text text-transparent tracking-tighter uppercase"
+          className="text-2xl md:text-3xl font-extrabold bg-linear-to-r from-cyan-300 via-teal-300 to-emerald-300 bg-clip-text text-transparent tracking-tight uppercase"
         >
           LEII.CODES
         </Link>
@@ -26,10 +26,10 @@ export const Navigation = () => {
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `text-xs lg:text-sm font-black uppercase tracking-[0.14em] transition-all ${
+                `text-xs lg:text-sm font-extrabold uppercase tracking-[0.14em] transition-all ${
                   isActive
-                    ? "text-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.35)]"
-                    : "text-teal-100/70 hover:text-teal-300"
+                    ? "text-cyan-200 drop-shadow-[0_0_10px_rgba(34,211,238,0.42)]"
+                    : "text-slate-300/80 hover:text-cyan-200"
                 }`
               }
             >
@@ -39,8 +39,8 @@ export const Navigation = () => {
         </nav>
       </div>
 
-      <nav className="md:hidden border-t border-gray-900/80 px-3 py-2 overflow-x-auto">
-        <div className="flex gap-2 min-w-max">
+      <nav className="md:hidden border-t px-3 py-2 overflow-x-auto mobile-nav">
+        <div className="flex items-center gap-2 min-w-max">
           {links.map((link) => (
             <NavLink
               key={link.path}
@@ -48,8 +48,8 @@ export const Navigation = () => {
               className={({ isActive }) =>
                 `px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.12em] transition-all ${
                   isActive
-                    ? "bg-teal-500/20 border border-teal-400/40 text-teal-300"
-                    : "border border-gray-800 text-teal-100/70"
+                    ? "bg-cyan-400/15 border border-cyan-300/40 text-cyan-100"
+                    : "border border-slate-700/80 text-slate-300/80"
                 }`
               }
             >

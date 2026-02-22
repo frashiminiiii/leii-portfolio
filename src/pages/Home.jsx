@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SiteFooter } from "../components/SiteFooter";
 const SEGMENT_START = 42;
 const SEGMENT_END = 70;
 
@@ -37,7 +38,6 @@ export const Home = ({ profile }) => {
         audio.currentTime = SEGMENT_START;
       }
     };
-
     audio.addEventListener("loadedmetadata", clampToSegment);
     audio.addEventListener("timeupdate", loopSegment);
 
@@ -48,37 +48,60 @@ export const Home = ({ profile }) => {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center text-center min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] px-6 overflow-hidden pt-2 md:pt-4 pb-4">
+    <div className="relative flex flex-col items-center text-center h-full px-6 overflow-hidden pt-2 md:pt-4 pb-4">
     {/* Background Marquee */}
     <div className="absolute inset-x-0 top-1 md:top-2 bottom-12 md:bottom-16 flex flex-col justify-between pointer-events-none select-none overflow-hidden opacity-[0.15]">
-      <div className="whitespace-nowrap flex animate-[marquee_15s_linear_infinite]">
-        <span className="text-[10vw] font-black uppercase text-white tracking-tighter mx-4 italic">
+      <div className="marquee-track marquee-forward">
+        <span className="text-[10vw] font-black uppercase text-white tracking-tighter px-4">
+          FRONTEND DEVELOPER &nbsp; FRONTEND DEVELOPER &nbsp;
+        </span>
+        <span aria-hidden className="text-[10vw] font-black uppercase text-white tracking-tighter px-4">
           FRONTEND DEVELOPER &nbsp; FRONTEND DEVELOPER &nbsp;
         </span>
       </div>
-      <div className="whitespace-nowrap flex animate-[marquee-reverse_18s_linear_infinite] opacity-60">
+      <div className="marquee-track marquee-reverse opacity-60">
         <span
-          className="text-[10vw] font-black uppercase text-transparent tracking-tighter mx-4"
+          className="text-[10vw] font-black uppercase text-transparent tracking-tighter px-4"
+          style={{ WebkitTextStroke: "2px white" }}
+        >
+          SOFTWARE ENGINEER &nbsp; SOFTWARE ENGINEER &nbsp;
+        </span>
+        <span
+          aria-hidden
+          className="text-[10vw] font-black uppercase text-transparent tracking-tighter px-4"
           style={{ WebkitTextStroke: "2px white" }}
         >
           SOFTWARE ENGINEER &nbsp; SOFTWARE ENGINEER &nbsp;
         </span>
       </div>
-      <div className="whitespace-nowrap flex animate-[marquee_25s_linear_infinite] opacity-40">
-        <span className="text-[10vw] font-black uppercase text-white tracking-tighter mx-4 italic">
+      <div className="marquee-track marquee-forward-slow opacity-40">
+        <span className="text-[10vw] font-black uppercase text-white tracking-tighter px-4">
+          NETWORK ADMIN &nbsp; NETWORK ADMIN &nbsp;
+        </span>
+        <span aria-hidden className="text-[10vw] font-black uppercase text-white tracking-tighter px-4">
           NETWORK ADMIN &nbsp; NETWORK ADMIN &nbsp;
         </span>
       </div>
-      <div className="whitespace-nowrap flex animate-[marquee-reverse_22s_linear_infinite] opacity-50">
+      <div className="marquee-track marquee-reverse-medium opacity-50">
         <span
-          className="text-[10vw] font-black uppercase text-transparent tracking-tighter mx-4"
+          className="text-[10vw] font-black uppercase text-transparent tracking-tighter px-4"
+          style={{ WebkitTextStroke: "2px white" }}
+        >
+          FULL STACK DEV &nbsp; FULL STACK DEV &nbsp;
+        </span>
+        <span
+          aria-hidden
+          className="text-[10vw] font-black uppercase text-transparent tracking-tighter px-4"
           style={{ WebkitTextStroke: "2px white" }}
         >
           FULL STACK DEV &nbsp; FULL STACK DEV &nbsp;
         </span>
       </div>
-      <div className="whitespace-nowrap flex animate-[marquee_30s_linear_infinite] opacity-30">
-        <span className="text-[10vw] font-black uppercase text-white tracking-tighter mx-4">
+      <div className="marquee-track marquee-forward-slowest opacity-30">
+        <span className="text-[10vw] font-black uppercase text-white tracking-tighter px-4">
+          COMPUTER ENGINEER &nbsp; COMPUTER ENGINEER &nbsp;
+        </span>
+        <span aria-hidden className="text-[10vw] font-black uppercase text-white tracking-tighter px-4">
           COMPUTER ENGINEER &nbsp; COMPUTER ENGINEER &nbsp;
         </span>
       </div>
@@ -139,38 +162,84 @@ export const Home = ({ profile }) => {
         />
       </div>
 
-      <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-2 uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+      <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-2 uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
         {profile.name}
       </h1>
-      <p className="text-base md:text-lg text-teal-400 font-bold mb-6 uppercase tracking-[0.2em]">
+      <p className="text-base md:text-lg text-cyan-300 font-bold mb-6 uppercase tracking-[0.2em]">
         {profile.title}
       </p>
-      <div className="max-w-md border-l-4 border-teal-500 pl-6 text-left bg-black/40 backdrop-blur-md p-4 rounded-r-2xl">
+      <div className="max-w-md border-l-4 border-cyan-400/90 pl-6 text-left glass-card p-4 rounded-r-2xl">
         <p className="text-base text-gray-300 italic leading-relaxed">
           {profile.quote}
         </p>
       </div>
-      <Link
-        to="/about"
-        className="mt-10 px-8 py-3 bg-teal-600 hover:bg-teal-500 text-white rounded-full font-black flex items-center gap-3 transition-all shadow-xl shadow-teal-500/30 uppercase text-xs tracking-widest"
-      >
-        Explore Portfolio <ChevronRight className="w-4 h-4" />
-      </Link>
+
+      <div className="w-full max-w-3xl mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {(profile.highlights || []).map((item) => (
+          <div
+            key={item.label}
+            className="rounded-2xl glass-card px-3 py-4"
+          >
+            <p className="text-lg md:text-xl font-black text-white leading-none">
+              {item.value}
+            </p>
+            <p className="mt-1 text-[10px] text-cyan-200/85 font-black uppercase tracking-widest">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+        {(profile.focusTags || []).map((tag) => (
+          <span
+            key={tag}
+            className="px-3 py-1 rounded-full border border-cyan-300/35 bg-cyan-300/10 text-cyan-100 text-[10px] font-black uppercase tracking-widest"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
+        <Link
+          to="/about"
+          className="px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-black flex items-center gap-3 transition-all shadow-xl shadow-cyan-500/25 uppercase text-xs tracking-widest"
+        >
+          Explore Portfolio <ChevronRight className="w-4 h-4" />
+        </Link>
+        <Link
+          to="/projects"
+          className="px-8 py-3 border border-slate-600 hover:border-cyan-300 text-gray-200 rounded-full font-black flex items-center gap-3 transition-all uppercase text-xs tracking-widest bg-slate-950/35"
+        >
+          View Projects
+        </Link>
+      </div>
+
     </div>
 
-    {/* Footer */}
-    <footer className="py-8 border-t border-gray-900 text-center flex flex-col items-center gap-3 relative z-40 mt-auto">
-      <div className="text-lg font-black uppercase tracking-tighter">
-        FRANCIS PASCUA <span className="text-teal-500">/</span> ENGINEER
-      </div>
-      <p className="text-teal-400 font-black italic text-sm tracking-widest uppercase opacity-80">
-        "Rise even when the world tells you to stay down."
-      </p>
-    </footer>
+    <SiteFooter />
 
     <style>{`
-      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-      @keyframes marquee-reverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        white-space: nowrap;
+        will-change: transform;
+      }
+      .marquee-forward { animation: marquee 34s linear infinite; }
+      .marquee-forward-slow { animation: marquee 40s linear infinite; }
+      .marquee-forward-slowest { animation: marquee 48s linear infinite; }
+      .marquee-reverse { animation: marquee-reverse 36s linear infinite; }
+      .marquee-reverse-medium { animation: marquee-reverse 44s linear infinite; }
+      @keyframes marquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+      @keyframes marquee-reverse {
+        0% { transform: translate3d(-50%, 0, 0); }
+        100% { transform: translate3d(0, 0, 0); }
+      }
       @keyframes vinyl-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
       .vinyl-spin { animation: vinyl-spin 2.2s linear infinite; }
       .tonearm-dropped { transform: rotate(24deg); }

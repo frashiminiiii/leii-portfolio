@@ -16,6 +16,7 @@ export const ReviewForm = ({ onAdd }) => {
       name,
       comment,
       rating,
+      helpful: 0,
       avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0D9488&color=fff&bold=true`,
       isPermanent: false,
     });
@@ -24,16 +25,16 @@ export const ReviewForm = ({ onAdd }) => {
 
   return (
     <PageWrapper title="Submit Review" subtitle="Share your experience">
-      <div className="max-w-xl mx-auto bg-gray-900/80 border border-gray-800 p-8 rounded-[2.5rem] backdrop-blur-md shadow-2xl">
+      <div className="max-w-xl mx-auto glass-card p-8 rounded-[2.5rem]">
         <form onSubmit={handlePost} className="space-y-6">
           <input
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-black/50 border border-gray-800 rounded-xl p-4 focus:border-teal-500 outline-none text-white text-sm"
+            className="w-full bg-slate-950/55 border border-slate-700 rounded-xl p-4 focus:border-cyan-300 outline-none text-white text-sm"
             placeholder="Your Name"
           />
-          <div className="bg-black/50 border border-gray-800 rounded-xl p-4 flex flex-col items-center gap-3">
+          <div className="bg-slate-950/55 border border-slate-700 rounded-xl p-4 flex flex-col items-center gap-3">
             <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest">
               Select Rating
             </span>
@@ -48,12 +49,12 @@ export const ReviewForm = ({ onAdd }) => {
             required
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className="w-full bg-black/50 border border-gray-800 rounded-xl p-4 focus:border-teal-500 outline-none h-32 text-white text-sm"
+            className="w-full bg-slate-950/55 border border-slate-700 rounded-xl p-4 focus:border-cyan-300 outline-none h-32 text-white text-sm"
             placeholder="Write your review here..."
           />
           <button
             type="submit"
-            className="w-full bg-teal-600 py-4 rounded-xl font-black uppercase text-white hover:bg-teal-500 transition-all flex justify-center items-center gap-3 text-xs tracking-widest"
+            className="w-full bg-cyan-600 py-4 rounded-xl font-black uppercase text-white hover:bg-cyan-500 transition-all flex justify-center items-center gap-3 text-xs tracking-widest"
             disabled={rating === 0}
           >
             POST REVIEW <Send size={16} />

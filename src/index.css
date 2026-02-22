@@ -1,1 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap");
 @import "tailwindcss";
+
+:root {
+  --bg-start: #0c141c;
+  --bg-mid: #09111a;
+  --bg-end: #070e16;
+  --text-main: #e9f4f4;
+  --title-main: #ffffff;
+  --line: rgba(125, 161, 180, 0.24);
+  --card-start: rgba(15, 25, 34, 0.82);
+  --card-end: rgba(10, 18, 26, 0.72);
+  --card-shadow: rgba(2, 7, 13, 0.44);
+  --header-bg: rgba(2, 6, 12, 0.75);
+  --header-border: rgba(207, 250, 254, 0.1);
+  --grid-line: rgba(163, 206, 224, 0.06);
+  --grid-line-alt: rgba(163, 206, 224, 0.05);
+  --atmosphere-bloom: rgba(26, 60, 84, 0.26);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-mid) 48%, var(--bg-end) 100%);
+  color: var(--text-main);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Sora", "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.14;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.12) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+.background-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background:
+    radial-gradient(circle at 50% 100%, var(--atmosphere-bloom), transparent 55%),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-alt) 1px, transparent 1px);
+  background-size: auto, 120px 120px, 120px 120px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 92%);
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--title-main);
+}
+
+.section-kicker {
+  color: rgba(42, 210, 201, 0.92);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.glass-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, var(--card-start) 0%, var(--card-end) 100%);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 60px var(--card-shadow);
+}
+
+.site-footer {
+  width: min(1100px, 100%);
+  margin: 3rem auto 0;
+  border-top: 1px solid var(--line);
+  padding: 1.7rem 0.5rem 2.6rem;
+  text-align: center;
+}
+
+.site-footer-name {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #dff4f2;
+}
+
+.site-footer-quote {
+  margin-top: 0.45rem;
+  color: rgba(90, 224, 214, 0.86);
+  font-size: 0.74rem;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.site-header {
+  border-bottom-color: var(--header-border);
+  background: var(--header-bg);
+}
+
+.mobile-nav {
+  border-top-color: var(--header-border);
+}

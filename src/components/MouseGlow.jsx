@@ -11,7 +11,7 @@ export const MouseGlow = () => {
     const updateGlow = () => {
       frameId = null;
       if (!glowRef.current) return;
-      glowRef.current.style.background = `radial-gradient(800px at ${nextX}px ${nextY}px, rgba(20,184,166,0.15), transparent 70%)`;
+      glowRef.current.style.background = `radial-gradient(760px at ${nextX}px ${nextY}px, rgba(41,182,197,0.16), transparent 70%)`;
     };
 
     const handleMouseMove = (e) => {
@@ -39,7 +39,7 @@ export const MouseGlow = () => {
       className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
       style={{
         background:
-          "radial-gradient(800px at 0px 0px, rgba(20,184,166,0.15), transparent 70%)",
+          "radial-gradient(760px at 0px 0px, rgba(41,182,197,0.16), transparent 70%)",
       }}
     />
   );
